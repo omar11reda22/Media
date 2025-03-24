@@ -1,0 +1,7 @@
+﻿how u thinking with repo and service and exec some of procedure 
+
+
+--1 repo == data access layer 
+--2 service == bussnis logic layer [maping] map DTO or viewmodel 
+
+---------------------------------------------
