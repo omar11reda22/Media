@@ -1,0 +1,99 @@
+﻿@model IMDB.ViewModels.AnimeViewModel
+
+@{
+    ViewData["Title"] = "Add Anime";
+    SelectList types = new SelectList(ViewBag.types, "MediaTypeId", "Name");
+}
+
+<h1 class="text-center text-primary mt-4">Add New Anime</h1>
+
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card shadow-lg p-4">
+                <h4 class="text-center text-secondary">Anime Information</h4>
+                <hr />
+               
+                <form asp-action="Add" enctype="multipart/form-data">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+                    <div class="form-group">
+                        <label asp-for="Title" class="form-label fw-bold">Title</label>
+                        <input asp-for="Title" class="form-control" placeholder="Enter anime title" />
+                        <span asp-validation-for="Title" class="text-danger"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <label asp-for="Year" class="form-label fw-bold">Year</label>
+                        <input asp-for="Year" class="form-control" placeholder="Enter release year" />
+                        <span asp-validation-for="Year" class="text-danger"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <label asp-for="Episodes" class="form-label fw-bold">Episodes</label>
+                        <input asp-for="Episodes" class="form-control" placeholder="Number of episodes" />
+                        <span asp-validation-for="Episodes" class="text-danger"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <label asp-for="Seasons" class="form-label fw-bold">Seasons</label>
+                        <input asp-for="Seasons" class="form-control" placeholder="Number of seasons" />
+                        <span asp-validation-for="Seasons" class="text-danger"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <label asp-for="Studio" class="form-label fw-bold">Studio</label>
+                        <input asp-for="Studio" class="form-control" placeholder="Enter studio name" />
+                        <span asp-validation-for="Studio" class="text-danger"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <label asp-for="Rating" class="form-label fw-bold">Rating</label>
+                        <input asp-for="Rating" class="form-control" placeholder="Enter rating (1-10)" />
+                        <span asp-validation-for="Rating" class="text-danger"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <label asp-for="Description" class="form-label fw-bold">Description</label>
+                        <textarea asp-for="Description" class="form-control" rows="3" placeholder="Enter anime description"></textarea>
+                        <span asp-validation-for="Description" class="text-danger"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <label asp-for="TrailerURL" class="form-label fw-bold">Trailer URL</label>
+                        <input asp-for="TrailerURL" class="form-control" placeholder="Enter trailer link" />
+                        <span asp-validation-for="TrailerURL" class="text-danger"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <label asp-for="MediaTypeId" class="form-label fw-bold">Media Type</label>
+                        <select asp-for="MediaTypeId" asp-items="types" class="form-control">
+                            <option value="">--- Select Media Type ---</option>
+                        </select>
+                        <span asp-validation-for="MediaTypeId" class="text-danger"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <label asp-for="Poster" class="form-label fw-bold">Upload Poster</label>
+                        <input type="file" name="file" class="form-control" />
+                        <span asp-validation-for="Poster" class="text-danger"></span>
+                    </div>
+
+                    <div class="form-group text-center mt-3">
+                        <input type="submit" value="Add Anime" class="btn btn-primary btn-lg w-100" />
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="text-center mt-3">
+    <a asp-action="Index" class="btn btn-secondary">Back to List</a>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

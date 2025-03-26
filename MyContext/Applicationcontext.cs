@@ -255,7 +255,7 @@ namespace IMDB.MyContext
         public DbSet<Media> medias { get; set; } 
         public DbSet<Actor> actors { get; set; } 
         public DbSet<Director> directors { get; set; } 
-
+        public DbSet<MediaType> mediaTypes { get; set; } 
         public DbSet<Genre> genres { get; set; }     
         public DbSet<Watchlist> watchlists { get; set; } 
         public DbSet<MediaWatchlist> movieWatchlists { get; set; } 

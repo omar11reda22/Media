@@ -4,6 +4,6 @@
     {
         T add(T entity);
 
-        IEnumerable<T> getall(); 
+        List<T> getall(); 
     }
 }

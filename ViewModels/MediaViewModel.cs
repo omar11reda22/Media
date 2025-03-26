@@ -17,5 +17,6 @@ namespace IMDB.ViewModels
         public string TrailerURL { get; set; }
 
         public int MediaTypeId { get; set; }
+        public string Name { get; set; }
     }
 }

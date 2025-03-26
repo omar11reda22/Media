@@ -399,7 +399,7 @@ namespace IMDB.Migrations
 
                     b.HasKey("MediaTypeId");
 
-                    b.ToTable("MediaType");
+                    b.ToTable("mediaTypes");
 
                     b.HasData(
                         new

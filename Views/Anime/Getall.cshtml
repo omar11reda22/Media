@@ -1,0 +1,44 @@
+﻿@model IEnumerable<IMDB.ViewModels.AnimeViewModel>
+
+@{
+    ViewData["Title"] = "Get All Anime";
+}
+
+<h1 class="text-center text-primary mt-4">Anime Collection</h1>
+
+<p class="text-center">
+    <a asp-action="Add" class="btn btn-success">+ Add New Anime</a>
+</p>
+
+<div class="container">
+    <div class="row">
+        @foreach (var item in Model)
+        {
+            <div class="col-md-4 mb-4">
+                <div class="card shadow-lg">
+                    <img src="~/images/Media/Anime/@item.Poster" class="card-img-top img-fluid" alt="Anime Poster">
+
+                    <div class="card-body">
+                        <h5 class="card-title text-primary">@item.Title (@item.Year)</h5>
+                        <p class="card-text"><strong>Studio:</strong> @item.Studio</p>
+                        <p class="card-text"><strong>Episodes:</strong> @item.Episodes | <strong>Seasons:</strong> @item.Seasons</p>
+                        <p class="card-text"><strong>Rating:</strong> ⭐ @item.Rating / 10</p>
+                        <p class="card-text"><strong>Description:</strong> @item.Description.Substring(0, Math.Min(100, item.Description.Length))...</p>
+
+                        <div class="d-flex justify-content-between">
+                            <a asp-action="Details" asp-route-id="@item.MediaId" class="btn btn-info btn-sm">Details</a>
+                            <a asp-action="Edit" asp-route-id="@item.MediaId" class="btn btn-warning btn-sm">Edit</a>
+                            <a asp-action="Delete" asp-route-id="@item.MediaId" class="btn btn-danger btn-sm">Delete</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

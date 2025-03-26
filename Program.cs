@@ -1,4 +1,7 @@
+using IMDB.Models;
 using IMDB.MyContext;
+using IMDB.Services;
+using IMDB.ViewModels;
 using Microsoft.EntityFrameworkCore;
 
 namespace IMDB
@@ -16,6 +19,10 @@ namespace IMDB
             {
                 option.UseSqlServer(connection);
             });
+
+            builder.Services.AddScoped<IAnime<AnimeViewModel>, AnimeService>();
+            builder.Services.AddTransient<IService<MediaType>, MediaTypeSerice>();
+
 
             var app = builder.Build();
 
