@@ -7,9 +7,9 @@ namespace IMDB.Controllers
 {
     public class AnimeController : Controller
     {
-        private readonly IAnime<AnimeViewModel> animeservice;
+        private readonly IMedia<AnimeViewModel> animeservice;
         private readonly IService<MediaType> mediatypeservice;
-        public AnimeController(IAnime<AnimeViewModel> animeservice, IService<MediaType> mediatypeservice)
+        public AnimeController(IMedia<AnimeViewModel> animeservice, IService<MediaType> mediatypeservice)
         {
             this.animeservice = animeservice;
             this.mediatypeservice = mediatypeservice;

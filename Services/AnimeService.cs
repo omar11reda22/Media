@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace IMDB.Services
 {
-    public class AnimeService : IAnime<AnimeViewModel>
+    public class AnimeService : IMedia<AnimeViewModel>
     {
         private readonly Applicationcontext context;
 
@@ -48,6 +48,11 @@ namespace IMDB.Services
             //     var animes = context.Database.SqlQuery<AnimeViewModel>("EXEC getmediabytypename @name", new SqlParameter("@name", "Anime"))
             //.ToList();
             return animes; 
+        }
+
+        public AnimeViewModel getbyid(int id)
+        {
+            throw new NotImplementedException();
         }
     }
 }

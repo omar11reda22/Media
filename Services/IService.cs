@@ -4,6 +4,8 @@
     {
         T add(T entity);
 
-        List<T> getall(); 
+        List<T> getall();
+
+      
     }
 }

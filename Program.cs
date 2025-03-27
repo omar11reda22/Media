@@ -1,5 +1,6 @@
 using IMDB.Models;
 using IMDB.MyContext;
+using IMDB.Repository;
 using IMDB.Services;
 using IMDB.ViewModels;
 using Microsoft.EntityFrameworkCore;
@@ -20,10 +21,11 @@ namespace IMDB
                 option.UseSqlServer(connection);
             });
 
-            builder.Services.AddScoped<IAnime<AnimeViewModel>, AnimeService>();
+            builder.Services.AddScoped<IMedia<AnimeViewModel>, AnimeService>();
             builder.Services.AddTransient<IService<MediaType>, MediaTypeSerice>();
-
-
+            builder.Services.AddScoped<IMedia<MovieViewModel>, MovieService>();
+            builder.Services.AddSingleton<IActor<Actor>, ActorRepo>();
+            builder.Services.AddTransient<IActorService<ActorViewModel>, ActorService>();
             var app = builder.Build();
 
             // Configure the HTTP request pipeline.

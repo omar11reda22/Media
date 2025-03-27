@@ -1,0 +1,130 @@
+﻿@model IEnumerable<IMDB.ViewModels.MovieViewModel>
+
+@{
+    ViewData["Title"] = "getall";
+}
+
+<h1 class="text-center text-light mt-4">Movie Collection</h1>
+
+<p class="text-center">
+    <a asp-action="Create" class="btn btn-success">+ Add New Movie</a>
+</p>
+
+<div class="container">
+    <table class="table table-dark table-striped table-hover text-center">
+        <thead class="thead-light">
+            <tr>
+                <th>@Html.DisplayNameFor(model => model.Duration)</th>
+                <th>@Html.DisplayNameFor(model => model.Title)</th>
+                <th>@Html.DisplayNameFor(model => model.Year)</th>
+                <th>@Html.DisplayNameFor(model => model.Rating)</th>
+                <th>@Html.DisplayNameFor(model => model.Poster)</th>
+                <th>@Html.DisplayNameFor(model => model.Description)</th>
+                <th>@Html.DisplayNameFor(model => model.TrailerURL)</th>
+                <th>@Html.DisplayNameFor(model => model.Name)</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@Html.DisplayFor(modelItem => item.Duration)</td>
+                    <td>@Html.DisplayFor(modelItem => item.Title)</td>
+                    <td>@Html.DisplayFor(modelItem => item.Year)</td>
+                    <td>⭐ @Html.DisplayFor(modelItem => item.Rating) / 10</td>
+                    <td>
+                        <img src="~/imegas/Media/Movies/@item.Poster" class="poster-img" alt="Movie Poster">
+                    </td>
+                    <td class="text-truncate description-text">
+                        @item.Description.Substring(0, Math.Min(100, item.Description.Length))...
+                    </td>
+                    <td>
+                        <a href="@item.TrailerURL" target="_blank" class="btn btn-primary btn-sm">Watch Trailer</a>
+                    </td>
+                    <td>@Html.DisplayFor(modelItem => item.Name)</td>
+                    <td>
+                        <a asp-action="Edit" asp-route-id="@item.MediaId" class="btn btn-warning btn-sm">Edit</a>
+                        <a asp-action="Details" asp-route-id="@item.MediaId" class="btn btn-info btn-sm">Details</a>
+                        <a asp-action="Delete" asp-route-id="@item.MediaId" class="btn btn-danger btn-sm">Delete</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}
+
+<style>
+    /* Dark Theme */
+    body {
+        background-color: #121212;
+        color: white;
+    }
+
+    .container {
+        max-width: 1200px;
+    }
+
+    /* Table Styling */
+    .table {
+        border-radius: 10px;
+        overflow: hidden;
+    }
+
+    .table-hover tbody tr:hover {
+        background-color: rgba(255, 255, 255, 0.1);
+    }
+
+    .thead-light th {
+        background-color: #333;
+        color: white;
+    }
+
+    /* Poster Image Styling */
+    .poster-img {
+        width: 80px;
+        height: 120px;
+        object-fit: cover;
+        border-radius: 8px;
+        transition: transform 0.3s ease-in-out;
+    }
+
+        .poster-img:hover {
+            transform: scale(1.1);
+        }
+
+    /* Button Styling */
+    .btn {
+        border-radius: 6px;
+        transition: all 0.3s ease-in-out;
+    }
+
+    .btn-warning:hover {
+        background-color: #ffc107;
+        color: black;
+    }
+
+    .btn-danger:hover {
+        background-color: #dc3545;
+        color: white;
+    }
+
+    .btn-primary:hover {
+        background-color: #0d6efd;
+        color: white;
+    }
+
+    /* Description Text Styling */
+    .description-text {
+        max-width: 250px;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+</style>
