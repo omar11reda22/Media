@@ -3,7 +3,7 @@ using IMDB.MyContext;
 
 namespace IMDB.Services
 {
-    public class MediaTypeSerice : IService<MediaType>
+    public class MediaTypeSerice : IMedia<MediaType>
     {
         private readonly Applicationcontext context;
 
@@ -17,9 +17,16 @@ namespace IMDB.Services
             throw new NotImplementedException();
         }
 
-        public List<MediaType> getall()
+     
+
+        public IEnumerable<MediaType> GetAll()
         {
             return context.mediaTypes.ToList(); 
+        }
+
+        public MediaType getbyid(int id)
+        {
+            throw new NotImplementedException();
         }
     }
 }

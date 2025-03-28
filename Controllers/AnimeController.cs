@@ -8,8 +8,8 @@ namespace IMDB.Controllers
     public class AnimeController : Controller
     {
         private readonly IMedia<AnimeViewModel> animeservice;
-        private readonly IService<MediaType> mediatypeservice;
-        public AnimeController(IMedia<AnimeViewModel> animeservice, IService<MediaType> mediatypeservice)
+        private readonly IMedia<MediaType> mediatypeservice;
+        public AnimeController(IMedia<AnimeViewModel> animeservice, IMedia<MediaType> mediatypeservice)
         {
             this.animeservice = animeservice;
             this.mediatypeservice = mediatypeservice;
@@ -31,7 +31,7 @@ namespace IMDB.Controllers
         public IActionResult Add()
         {
             // pass the media type 
-            var types = mediatypeservice.getall();
+            var types = mediatypeservice.GetAll();
             ViewBag.types = types; 
             return View();
         }
@@ -63,7 +63,7 @@ namespace IMDB.Controllers
                 return RedirectToAction("getall");
 
             }
-            ViewBag.types = mediatypeservice.getall();
+            ViewBag.types = mediatypeservice.GetAll();
             return View();
         }
     }

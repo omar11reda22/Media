@@ -48,10 +48,10 @@ namespace IMDB.Services
             throw new NotImplementedException();
         }
 
-        IEnumerable<MovieViewModel> IMedia<MovieViewModel>.GetAll()
-        {
-            throw new NotImplementedException();
-        }
+        //IEnumerable<MovieViewModel> IMedia<MovieViewModel>.GetAll()
+        //{
+        //    throw new NotImplementedException();
+        //}
 
         MovieViewModel IMedia<MovieViewModel>.getbyid(int id)
         {

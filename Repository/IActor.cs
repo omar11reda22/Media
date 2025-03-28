@@ -1,5 +1,4 @@
-﻿using AspNetCore;
-
+﻿
 namespace IMDB.Repository
 {
     public interface IActor<T>

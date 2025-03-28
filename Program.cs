@@ -22,10 +22,13 @@ namespace IMDB
             });
 
             builder.Services.AddScoped<IMedia<AnimeViewModel>, AnimeService>();
-            builder.Services.AddTransient<IService<MediaType>, MediaTypeSerice>();
+            builder.Services.AddTransient<IMedia<MediaType>, MediaTypeSerice>();
             builder.Services.AddScoped<IMedia<MovieViewModel>, MovieService>();
-            builder.Services.AddSingleton<IActor<Actor>, ActorRepo>();
-            builder.Services.AddTransient<IActorService<ActorViewModel>, ActorService>();
+            builder.Services.AddTransient<IActor<Actor>, ActorRepo>();
+            builder.Services.AddTransient<IMedia<ActorViewModel>, ActorService>();
+            builder.Services.AddTransient<IMedia<Movie_ActorViewModel>, MovieActorService>();
+
+
             var app = builder.Build();
 
             // Configure the HTTP request pipeline.

@@ -6,6 +6,6 @@
         public string BIO { get; set; }
 
         public string Nationality { get; set; }
-        public string image { get; set; }
+        public string? image { get; set; }
     }
 }

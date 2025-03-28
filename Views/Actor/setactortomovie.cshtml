@@ -1,0 +1,41 @@
+﻿@model IMDB.ViewModels.Movie_ActorViewModel
+
+@{
+    ViewData["Title"] = "setactortomovie";
+    SelectList movies = new SelectList(ViewBag.movies, "MediaId", "Title");
+    SelectList actors = new SelectList(ViewBag.actors, "Actor_ID", "Name");
+}
+
+<h1>setactortomovie</h1>
+
+<h4>Movie_ActorViewModel</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="setactortomovie">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Actorid" class="control-label"></label>
+                <select asp-for="Actorid" asp-items="actors">
+                    <option>---select actor---</option>
+                </select>
+                <span asp-validation-for="Actorid" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Movieid" class="control-label"></label>
+                <select asp-for="Movieid" asp-items="movies">
+                    <option>---select movie---</option>
+                </select>
+                <span asp-validation-for="Movieid" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+

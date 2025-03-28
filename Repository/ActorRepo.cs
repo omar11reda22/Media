@@ -22,7 +22,7 @@ namespace IMDB.Repository
 
         public List<Actor> GetAll()
         {
-            throw new NotImplementedException();
+          return context.actors.ToList();
         }
     }
 }

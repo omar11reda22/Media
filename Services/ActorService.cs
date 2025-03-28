@@ -4,7 +4,7 @@ using IMDB.ViewModels;
 
 namespace IMDB.Services
 {
-    public class ActorService : IActorService<ActorViewModel>
+    public class ActorService :IMedia<ActorViewModel>
     {
         private readonly IActor<Actor> actorrepo;
 
@@ -24,6 +24,16 @@ namespace IMDB.Services
             };
             actorrepo.Add(actor);
             return entity; 
+        }
+
+        public IEnumerable<ActorViewModel> GetAll()
+        {
+            throw new NotImplementedException();
+        }
+
+        public ActorViewModel getbyid(int id)
+        {
+            throw new NotImplementedException();
         }
     }
 }
