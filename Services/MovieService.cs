@@ -45,7 +45,28 @@ namespace IMDB.Services
 
         MovieViewModel IMedia<MovieViewModel>.add(MovieViewModel item)
         {
-            throw new NotImplementedException();
+            Media mm = new Media()
+            {
+                Title = item.Title,
+                Description = item.Description,
+                Year = item.Year,
+                ReleaseDate = item.ReleaseDate,
+                TrailerURL = item.TrailerURL,
+                Duration = item.Duration,
+                DirectorId = item.DirectorId,
+                MediaTypeId = 1,
+                Poster = item.Poster,
+                Rating = item.Rating,
+            };
+            foreach(var genreid in item.SelectedGenres)
+            {
+                mm.MediaGenres.Add(new Media_Genre { GenreId = genreid });
+                //context.movie_Genres.Add(new Media_Genre { GenreId = genreid, MediaId = item.MediaId });
+            }
+
+            context.medias.Add(mm);
+            context.SaveChanges();
+            return item;
         }
 
         //IEnumerable<MovieViewModel> IMedia<MovieViewModel>.GetAll()

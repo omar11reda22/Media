@@ -26,6 +26,8 @@ namespace IMDB
             builder.Services.AddScoped<IMedia<MovieViewModel>, MovieService>();
             builder.Services.AddTransient<IActor<Actor>, ActorRepo>();
             builder.Services.AddTransient<IMedia<ActorViewModel>, ActorService>();
+            builder.Services.AddTransient<IMedia<Genre>, GenreService>();
+            builder.Services.AddTransient<IMedia<Director>, DirectorService>();
             builder.Services.AddTransient<IMedia<Movie_ActorViewModel>, MovieActorService>();
 
 

@@ -7,5 +7,7 @@
         {
             get; set;
         }
+        public List<int> SelectedGenres { get; set; } = new List<int>(); // Store selected genres
+
     }
 }
