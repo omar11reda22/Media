@@ -2,7 +2,7 @@
 
 @{
     ViewData["Title"] = "Add";
-    SelectList genres = new SelectList(ViewBag.genres, "Genre_ID", "Name");
+    MultiSelectList genres = new MultiSelectList(ViewBag.genres, "Genre_ID", "Name");
     SelectList directors = new SelectList(ViewBag.directors, "Director_ID", "Name");
 }
 
@@ -54,7 +54,7 @@
                     <div class="mb-3">
                         <label class="form-label">Select Genres</label>
                         <select asp-for="SelectedGenres" asp-items="genres" class="form-select" multiple id="genreSelect">
-                            <option disabled>-- Select Genres --</option>
+                            
                         </select>
                     </div>
 

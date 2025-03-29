@@ -29,7 +29,8 @@ namespace IMDB.Services
                 DirectorId = item.DirectorId,
                 MediaTypeId = item.MediaTypeId, 
                 Poster = item.Poster, 
-                Rating = item.Rating, 
+                Rating = (float)item.Rating, 
+                
             }; 
             context.medias.Add(mm); 
             context.SaveChanges();
@@ -47,6 +48,7 @@ namespace IMDB.Services
         {
             Media mm = new Media()
             {
+                MediaId = item.MediaId, 
                 Title = item.Title,
                 Description = item.Description,
                 Year = item.Year,
@@ -56,7 +58,9 @@ namespace IMDB.Services
                 DirectorId = item.DirectorId,
                 MediaTypeId = 1,
                 Poster = item.Poster,
-                Rating = item.Rating,
+                Rating = (float)item.Rating,
+                MediaGenres = new List<Media_Genre>()
+
             };
             foreach(var genreid in item.SelectedGenres)
             {

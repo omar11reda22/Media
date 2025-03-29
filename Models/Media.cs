@@ -12,7 +12,7 @@ namespace IMDB.Models
         public string Title { get; set; }
 
         public int Year { get; set; }
-        public int Rating { get; set; }
+        public float Rating { get; set; }
         public string Poster { get; set; }
         public string Description { get; set; }
         public DateOnly ReleaseDate { get; set; }

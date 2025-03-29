@@ -1,7 +1,9 @@
 ﻿using IMDB.Models;
+using IMDB.MyContext;
 using IMDB.Services;
 using IMDB.ViewModels;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace IMDB.Controllers
 {
@@ -11,12 +13,14 @@ namespace IMDB.Controllers
         private readonly IMedia<Genre> genreservice;
         private readonly IMedia<Director> directorservice;
         private readonly IWebHostEnvironment env;
-        public MovieController(IMedia<MovieViewModel> movieservice, IMedia<Genre> genreservice, IMedia<Director> directorservice, IWebHostEnvironment env)
+        private readonly Applicationcontext context;
+        public MovieController(IMedia<MovieViewModel> movieservice, IMedia<Genre> genreservice, IMedia<Director> directorservice, IWebHostEnvironment env, Applicationcontext context)
         {
             this.movieservice = movieservice;
             this.genreservice = genreservice;
             this.directorservice = directorservice;
             this.env = env;
+            this.context = context;
         }
 
         public IActionResult Index()
@@ -38,8 +42,13 @@ namespace IMDB.Controllers
         [HttpGet]
         public IActionResult Add()
         {
+           // ViewBag.genres = genreservice.GetAll(); 
+            ViewBag.directors = directorservice.GetAll();
+            //var genres = context.genres.Select(s => new SelectListItem { Value = s.Genre_ID.ToString(), Text = s.Name }).OrderBy(s => s.Text);
+            //var model = new MovieViewModel();
+            //model.genres = genres;
+            //
             ViewBag.genres = genreservice.GetAll(); 
-            ViewBag.directors = directorservice.GetAll(); 
             return View(); 
         }
         [HttpPost]
@@ -62,6 +71,7 @@ namespace IMDB.Controllers
                         file.CopyTo(fileStream);
                     }
                     movieViewModel.Poster = filename;
+                    Console.WriteLine(movieViewModel.SelectedGenres.Count);
 
                 }
             }

@@ -21,7 +21,7 @@ namespace IMDB.Services
             {
                 Title = item.Title, 
                 Year = item.Year, 
-                Rating = item.Rating,
+                Rating = (float)item.Rating,
                 Poster = item.Poster, 
                 Description = item.Description,
                 ReleaseDate = item.ReleaseDate,
