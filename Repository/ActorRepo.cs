@@ -24,5 +24,10 @@ namespace IMDB.Repository
         {
           return context.actors.ToList();
         }
+
+        public Actor getbyid(int id)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

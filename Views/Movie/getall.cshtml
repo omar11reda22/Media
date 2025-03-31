@@ -1,9 +1,9 @@
-﻿@model IEnumerable<IMDB.ViewModels.MovieViewModel>
+﻿@model IEnumerable<IMDB.ViewModels.TotalMovieViewModel>
 
 @{
     ViewData["Title"] = "getall";
 }
-
+<script src="~/js/moviedetails.js"></script>
 <h1 class="text-center text-light mt-4">Movie Collection</h1>
 
 <p class="text-center">
@@ -28,13 +28,13 @@
         <tbody>
             @foreach (var item in Model)
             {
-                <tr>
+                <tr  data-media-id = "@item.MediaId">
                     <td>@Html.DisplayFor(modelItem => item.Duration)</td>
                     <td>@Html.DisplayFor(modelItem => item.Title)</td>
                     <td>@Html.DisplayFor(modelItem => item.Year)</td>
                     <td>⭐ @Html.DisplayFor(modelItem => item.Rating) / 10</td>
                     <td>
-                        <img src="~/imegas/Media/Movies/@item.Poster" class="poster-img" alt="Movie Poster">
+                        <img src="~/imegas/Media/Movie/@item.Poster" class="poster-img" alt="Movie Poster">
                     </td>
                     <td class="text-truncate description-text">
                         @item.Description.Substring(0, Math.Min(100, item.Description.Length))...

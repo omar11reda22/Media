@@ -9,7 +9,8 @@ namespace IMDB.ViewModels
         {
             get; set;
         }
-        public  List<int> SelectedGenres { get; set; } = new List<int>(); // Store selected genres
+        
+        public  List<int>? SelectedGenres { get; set; } = new List<int>(); // Store selected genres
 
       //  public IEnumerable<SelectListItem> genres { get; set; } = Enumerable.Empty<SelectListItem>(); 
     }

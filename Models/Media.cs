@@ -34,7 +34,7 @@ namespace IMDB.Models
         public ICollection<Media_Genre> MediaGenres { get; set; } // Many-to-Many with Genre
         public ICollection<Media_Actors> MediaActors { get; set; } // Many-to-Many with Actors
         public ICollection<MediaWatchlist> MediaWatchlists { get; set; } // Many-to-Many with Watchlists
-        public ICollection<Review> Reviews { get; set; } // One-to-Many with Reviews
+        public ICollection<Review> Reviews { get; set; } // One-to-Many with Reviewso
     }
 
 }

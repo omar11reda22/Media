@@ -14,13 +14,15 @@ namespace IMDB.Controllers
         private readonly IMedia<Director> directorservice;
         private readonly IWebHostEnvironment env;
         private readonly Applicationcontext context;
-        public MovieController(IMedia<MovieViewModel> movieservice, IMedia<Genre> genreservice, IMedia<Director> directorservice, IWebHostEnvironment env, Applicationcontext context)
+        private readonly IMedia<TotalMovieViewModel> totalmovieservice;
+        public MovieController(IMedia<MovieViewModel> movieservice, IMedia<Genre> genreservice, IMedia<Director> directorservice, IWebHostEnvironment env, Applicationcontext context, IMedia<TotalMovieViewModel> totalmovieservice)
         {
             this.movieservice = movieservice;
             this.genreservice = genreservice;
             this.directorservice = directorservice;
             this.env = env;
             this.context = context;
+            this.totalmovieservice = totalmovieservice;
         }
 
         public IActionResult Index()
@@ -29,7 +31,7 @@ namespace IMDB.Controllers
         }
         public IActionResult Getall()
         {
-           IEnumerable<MovieViewModel> m = movieservice.GetAll(); 
+            IEnumerable<TotalMovieViewModel> m = totalmovieservice.GetAll(); 
             return View(m);
         }
 

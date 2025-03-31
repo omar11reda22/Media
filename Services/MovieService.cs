@@ -1,6 +1,8 @@
 ﻿using IMDB.Models;
 using IMDB.MyContext;
+using IMDB.Repository;
 using IMDB.ViewModels;
+using Microsoft.CodeAnalysis.CSharp.Syntax;
 using Microsoft.Data.SqlClient;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
@@ -10,10 +12,12 @@ namespace IMDB.Services
     public class MovieService : IMedia<MovieViewModel>
     {
         private readonly Applicationcontext context;
+        private readonly IActor<Media> movierepo;
 
-        public MovieService(Applicationcontext context)
+        public MovieService(Applicationcontext context, IActor<Media> movierepo)
         {
             this.context = context;
+            this.movierepo = movierepo;
         }
 
         public MovieViewModel add(MovieViewModel item)
@@ -40,6 +44,8 @@ namespace IMDB.Services
         public IEnumerable<MovieViewModel> GetAll()
         {
             IEnumerable<MovieViewModel> movies = context.Database.SqlQueryRaw<MovieViewModel>("exec getmediabytypename @name", new SqlParameter("@name", "Movie")).AsEnumerable().ToList();
+
+            //  var movies = context.medias.Where(s => s.MediaTypeId == 1).ToList(); 
 
             return movies; 
         }
@@ -80,7 +86,30 @@ namespace IMDB.Services
 
         MovieViewModel IMedia<MovieViewModel>.getbyid(int id)
         {
+            // maping viewmodel to media 
+
+
+            //var result =  movierepo.getbyid(id);
+            ////result type media 
+
+            //MovieViewModel mm = new()
+            //{
+            //    Title = result.Title, 
+            //    Description= result.Description,
+            //    Year = result.Year,
+            //    ReleaseDate = result.ReleaseDate,
+            //    TrailerURL = result.TrailerURL,
+            //    Duration = result.Duration,
+            //    DirectorId = result.DirectorId,
+            //    MediaTypeId = 1,
+            //    Poster = result.Poster,
+            //    Rating = (float)result.Rating,
+            //    MediaId = result.MediaId,
+
+            // };
             throw new NotImplementedException();
+            
+
         }
     }
 }
