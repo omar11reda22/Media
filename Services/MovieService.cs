@@ -88,25 +88,29 @@ namespace IMDB.Services
         {
             // maping viewmodel to media 
 
+            var result = movierepo.getbyid(id);
+            
 
             //var result =  movierepo.getbyid(id);
             ////result type media 
 
-            //MovieViewModel mm = new()
-            //{
-            //    Title = result.Title, 
-            //    Description= result.Description,
-            //    Year = result.Year,
-            //    ReleaseDate = result.ReleaseDate,
-            //    TrailerURL = result.TrailerURL,
-            //    Duration = result.Duration,
-            //    DirectorId = result.DirectorId,
-            //    MediaTypeId = 1,
-            //    Poster = result.Poster,
-            //    Rating = (float)result.Rating,
-            //    MediaId = result.MediaId,
+            MovieViewModel mm = new()
+            {
+                Title = result.Title,
+                Description = result.Description,
+                Year = result.Year,
+                ReleaseDate = result.ReleaseDate,
+                TrailerURL = result.TrailerURL,
+                Duration = result.Duration,
+                DirectorId = result.DirectorId,
+                MediaTypeId = 1,
+                Poster = result.Poster,
+                Rating = (float)result.Rating,
+                MediaId = result.MediaId,
+               
+                
 
-            // };
+            };
             throw new NotImplementedException();
             
 

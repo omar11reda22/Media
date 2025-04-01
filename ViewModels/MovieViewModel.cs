@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc.Rendering;
+﻿using IMDB.Models;
+using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace IMDB.ViewModels
 {
@@ -12,6 +13,7 @@ namespace IMDB.ViewModels
         
         public  List<int>? SelectedGenres { get; set; } = new List<int>(); // Store selected genres
 
-      //  public IEnumerable<SelectListItem> genres { get; set; } = Enumerable.Empty<SelectListItem>(); 
+      public  List<Actor> actors { get; set; } = new List<Actor>(); 
+        //  public IEnumerable<SelectListItem> genres { get; set; } = Enumerable.Empty<SelectListItem>(); 
     }
 }
