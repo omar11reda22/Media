@@ -1,5 +1,6 @@
 ﻿using IMDB.Models;
 using IMDB.MyContext;
+using IMDB.Repository;
 using IMDB.Services;
 using IMDB.ViewModels;
 using Microsoft.AspNetCore.Mvc;
@@ -15,7 +16,8 @@ namespace IMDB.Controllers
         private readonly IWebHostEnvironment env;
         private readonly Applicationcontext context;
         private readonly IMedia<TotalMovieViewModel> totalmovieservice;
-        public MovieController(IMedia<MovieViewModel> movieservice, IMedia<Genre> genreservice, IMedia<Director> directorservice, IWebHostEnvironment env, Applicationcontext context, IMedia<TotalMovieViewModel> totalmovieservice)
+        private readonly IActor<Media> movierepo;
+        public MovieController(IMedia<MovieViewModel> movieservice, IMedia<Genre> genreservice, IMedia<Director> directorservice, IWebHostEnvironment env, Applicationcontext context, IMedia<TotalMovieViewModel> totalmovieservice, IActor<Media> movierepo)
         {
             this.movieservice = movieservice;
             this.genreservice = genreservice;
@@ -23,6 +25,7 @@ namespace IMDB.Controllers
             this.env = env;
             this.context = context;
             this.totalmovieservice = totalmovieservice;
+            this.movierepo = movierepo;
         }
 
         public IActionResult Index()
@@ -36,9 +39,10 @@ namespace IMDB.Controllers
         }
 
         // this will display actors and director data
-        public IActionResult Details()
+        public IActionResult Details(int id)
         {
-            return View();
+            var movie = totalmovieservice.getbyid(id); 
+            return View(movie);
         }
 
         [HttpGet]

@@ -2,6 +2,7 @@
 {
     public class ActorViewModel
     {
+        public int ActorId { get; set; }
         public string Name { get; set; }
         public string BIO { get; set; }
 

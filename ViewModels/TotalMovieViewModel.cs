@@ -1,4 +1,6 @@
-﻿namespace IMDB.ViewModels
+﻿using System.Drawing;
+
+namespace IMDB.ViewModels
 {
     public class TotalMovieViewModel:MediaViewModel
     {
@@ -7,5 +9,11 @@
         {
             get; set;
         }
+
+        public string Directorname { get; set; }
+        public string Directorimg { get; set; }
+
+        public List<ActorViewModel> actorViewModels { get; set; } = new List<ActorViewModel>();
+        public List<GenreViewModel> genreViewModels { get; set; } = new List<GenreViewModel>(); 
     }
 }

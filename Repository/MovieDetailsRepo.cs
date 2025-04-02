@@ -21,7 +21,7 @@ namespace IMDB.Repository
 
         public Media getbyid(int id)
         {
-            var movie = context.medias.Include(s => s.MediaActors).ThenInclude(s => s.Actor).FirstOrDefault(s => s.MediaId == id);
+            var movie = context.medias.Include(s => s.MediaType).Include(s => s.Director).Include(s => s.MediaGenres).ThenInclude(s => s.Genre).Include(s => s.MediaActors).ThenInclude(s => s.Actor).FirstOrDefault(s => s.MediaId == id);
 
             return movie;
         }
