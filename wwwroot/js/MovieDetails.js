@@ -16,6 +16,19 @@ window.addEventListener('load', function () {
 
         }); // end of event 
     });
-    
+
+
+    // throw director to details
+
+    var dr = this.document.getElementById("director");
+    dr.addEventListener('click', function () {
+        var iddd = this.getAnimations("data-media-id");
+        if (iddd) {
+            window.location.href = `Director/Details/${iddd}`;
+        }
+
+    }); // end of event 
+
+
 
 }); // end of load 

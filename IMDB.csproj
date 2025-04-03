@@ -22,7 +22,6 @@
 
   <ItemGroup>
     <Folder Include="wwwroot\imegas\Actor\" />
-    <Folder Include="wwwroot\imegas\Director\" />
     <Folder Include="wwwroot\imegas\Media\Series\" />
   </ItemGroup>
 

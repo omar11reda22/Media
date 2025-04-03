@@ -27,11 +27,13 @@ namespace IMDB
             builder.Services.AddTransient<IActor<Actor>, ActorRepo>();
             builder.Services.AddTransient<IMedia<ActorViewModel>, ActorService>();
             builder.Services.AddTransient<IMedia<Genre>, GenreService>();
-            builder.Services.AddTransient<IMedia<Director>, DirectorService>();
+            builder.Services.AddTransient<IMedia<Director>, ReplacmentDirectorService>();
+            builder.Services.AddTransient<IMedia<DirectorViewModel>, DirectorService>();
             builder.Services.AddTransient<IMedia<Movie_ActorViewModel>, MovieActorService>();
             builder.Services.AddTransient<IMedia<TotalMovieViewModel>, TotalMoviesService>();
             builder.Services.AddTransient<IActor<Media>, MovieDetailsRepo>();
             builder.Services.AddTransient<IActor<Media>, MovieDetailsRepo>();
+            builder.Services.AddTransient<IActor<Director>, Directorrepo>(); 
 
 
             var app = builder.Build();

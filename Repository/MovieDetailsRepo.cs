@@ -16,7 +16,9 @@ namespace IMDB.Repository
 
         public List<Media> GetAll()
         {
-            throw new NotImplementedException();
+
+            var movie = context.medias.Include(s => s.MediaType).Include(s => s.Director).Include(s => s.MediaGenres).ThenInclude(s => s.Genre).Include(s => s.MediaActors).ThenInclude(s => s.Actor).ToList();
+            return movie; 
         }
 
         public Media getbyid(int id)

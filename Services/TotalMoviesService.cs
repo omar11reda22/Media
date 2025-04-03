@@ -24,11 +24,39 @@ namespace IMDB.Services
 
         public IEnumerable<TotalMovieViewModel> GetAll()
         {
-            IEnumerable<TotalMovieViewModel> movies = context.Database.SqlQueryRaw<TotalMovieViewModel>("exec getmediabytypename @name", new SqlParameter("@name", "Movie")).AsEnumerable().ToList();
+            var movies = mediarepo.GetAll();
 
             //  var movies = context.medias.Where(s => s.MediaTypeId == 1).ToList(); 
 
-            return movies;
+            return movies.Select(movie => new TotalMovieViewModel
+            {
+                MediaId = movie.MediaId,
+                Name = movie.MediaType.Name,
+                Title = movie.Title,
+                Duration = movie.Duration,
+                Description = movie.Description,
+                Rating = movie.Rating,
+                Poster = movie.Poster,
+                Year = movie.Year,
+                ReleaseDate = movie.ReleaseDate,
+                TrailerURL = movie.TrailerURL,
+                Directorname = movie.Director.Name,
+                DirectorId = movie.DirectorId,
+                Directorimg = movie.Director.image,
+                genreViewModels = movie.MediaGenres.Select(g => new GenreViewModel
+                {
+                    Genre_ID = g.GenreId,
+                    Name = g.Genre.Name
+                }).ToList(),
+                actorViewModels = movie.MediaActors.Select(a => new ActorViewModel
+                {
+                    ActorId = a.Actor.Actor_ID,
+                    Name = a.Actor.Name,
+                    image = a.Actor.image,
+                    BIO = a.Actor.BIO,
+                    Nationality = a.Actor.nationality, 
+                }).ToList()
+            }).ToList();
         }
 
         public TotalMovieViewModel getbyid(int id)

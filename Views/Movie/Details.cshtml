@@ -3,7 +3,7 @@
 @{
     ViewData["Title"] = "Movie Details";
 }
-
+<script src="~/js/moviedetails.js"></script>
 <div class="container mt-5">
     <h2 class="text-center">Movie Details</h2>
     <div class="card shadow-lg p-4">
@@ -21,7 +21,7 @@
                 <p><strong>Trailer:</strong> <a href="@Model.TrailerURL" target="_blank">Watch Trailer</a></p>
                 <hr>
                 <h5>Director</h5>
-                <div class="d-flex align-items-center">
+                <div class="d-flex align-items-center" id="director" data-media-id = "@Model.DirectorId">
                     <img src="~/imegas/Director/@Model.Directorimg" class="rounded-circle" width="50" height="50" alt="Director Image">
                     <span class="ms-3">@Model.Directorname</span>
                 </div>
