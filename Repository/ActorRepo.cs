@@ -22,7 +22,7 @@ namespace IMDB.Repository
 
         public List<Actor> GetAll()
         {
-          return context.actors.ToList();
+          return context.actors.OrderByDescending(s => s.Name).ToList();
         }
 
         public Actor getbyid(int id)

@@ -40,22 +40,7 @@ namespace IMDB.Services
                 Year = movie.Year,
                 ReleaseDate = movie.ReleaseDate,
                 TrailerURL = movie.TrailerURL,
-                Directorname = movie.Director.Name,
-                DirectorId = movie.DirectorId,
-                Directorimg = movie.Director.image,
-                genreViewModels = movie.MediaGenres.Select(g => new GenreViewModel
-                {
-                    Genre_ID = g.GenreId,
-                    Name = g.Genre.Name
-                }).ToList(),
-                actorViewModels = movie.MediaActors.Select(a => new ActorViewModel
-                {
-                    ActorId = a.Actor.Actor_ID,
-                    Name = a.Actor.Name,
-                    image = a.Actor.image,
-                    BIO = a.Actor.BIO,
-                    Nationality = a.Actor.nationality, 
-                }).ToList()
+              
             }).ToList();
         }
 

@@ -8,6 +8,6 @@
         public DateOnly birthdate { get; set; }
         public string nationality  { get; set; }
         public string image { get; set; }
-        public List<MediaViewModel> mediaViewModels { get; set; } = new List<MediaViewModel>();  
+        public List<MediaViewModel>? mediaViewModels { get; set; } = new List<MediaViewModel>();  
     }
 }

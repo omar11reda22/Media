@@ -10,16 +10,18 @@ namespace IMDB.Controllers
     {
         private readonly IMedia<ActorViewModel> actorservice;
         private readonly IWebHostEnvironment env;
-        private readonly IMedia<MovieViewModel> movieservice;
+        //private readonly IMedia<MovieViewModel> movieservice;
         private readonly IActor<Actor> actorrepo;
         private readonly IMedia<Movie_ActorViewModel> movieactorservice;
-        public ActorController(IMedia<ActorViewModel> actorservice, IWebHostEnvironment env, IMedia<MovieViewModel> movieservice, IActor<Actor> actorrepo, IMedia<Movie_ActorViewModel> movieactorservice)
+        private readonly IMedia<TotalMovieViewModel> movieservice;
+        public ActorController(IMedia<ActorViewModel> actorservice, IWebHostEnvironment env, IActor<Actor> actorrepo, IMedia<Movie_ActorViewModel> movieactorservice, IMedia<TotalMovieViewModel> movieservice)
         {
             this.actorservice = actorservice;
             this.env = env;
-            this.movieservice = movieservice;
+            //  this.movieservice = movieservice;
             this.actorrepo = actorrepo;
             this.movieactorservice = movieactorservice;
+            this.movieservice = movieservice;
         }
 
         public IActionResult Index()

@@ -9,6 +9,11 @@ namespace IMDB.Repository
     {
         private readonly Applicationcontext context;
 
+        public MovieDetailsRepo(Applicationcontext context)
+        {
+            this.context = context;
+        }
+
         public Media Add(Media item)
         {
             throw new NotImplementedException();
@@ -16,9 +21,10 @@ namespace IMDB.Repository
 
         public List<Media> GetAll()
         {
+            var movies = context.medias
+      .Where(s => s.MediaType.Name == "Movie").Include(s => s.MediaType).OrderByDescending(s => s.Title).ToList(); 
 
-            var movie = context.medias.Include(s => s.MediaType).Include(s => s.Director).Include(s => s.MediaGenres).ThenInclude(s => s.Genre).Include(s => s.MediaActors).ThenInclude(s => s.Actor).ToList();
-            return movie; 
+            return movies; 
         }
 
         public Media getbyid(int id)

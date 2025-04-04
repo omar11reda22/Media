@@ -13,7 +13,7 @@ namespace IMDB.ViewModels
         public string Directorname { get; set; }
         public string Directorimg { get; set; }
 
-        public List<ActorViewModel> actorViewModels { get; set; } = new List<ActorViewModel>();
-        public List<GenreViewModel> genreViewModels { get; set; } = new List<GenreViewModel>(); 
+        public List<ActorViewModel>? actorViewModels { get; set; } = new List<ActorViewModel>();
+        public List<GenreViewModel>? genreViewModels { get; set; } = new List<GenreViewModel>(); 
     }
 }
