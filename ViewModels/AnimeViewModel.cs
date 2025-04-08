@@ -5,5 +5,6 @@
         public int? Episodes { get; set; } // Only for Anime
         public int? Seasons { get; set; } // Only for Series
         public string? Studio { get; set; } // Only for Anime
+        public List<GenreViewModel>? genreViewModels { get; set; } = new List<GenreViewModel>();
     }
 }

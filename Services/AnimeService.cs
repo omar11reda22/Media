@@ -1,5 +1,6 @@
 ﻿using IMDB.Models;
 using IMDB.MyContext;
+using IMDB.Repository;
 using IMDB.ViewModels;
 using Microsoft.Data.SqlClient;
 using Microsoft.EntityFrameworkCore;
@@ -9,10 +10,11 @@ namespace IMDB.Services
     public class AnimeService : IMedia<AnimeViewModel>
     {
         private readonly Applicationcontext context;
-
-        public AnimeService(Applicationcontext context)
+        private readonly IActor<Media> actorrepo;
+        public AnimeService(Applicationcontext context, IActor<Media> actorrepo)
         {
             this.context = context;
+            this.actorrepo = actorrepo;
         }
 
         public AnimeViewModel add(AnimeViewModel item)

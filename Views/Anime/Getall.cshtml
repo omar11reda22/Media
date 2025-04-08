@@ -3,6 +3,7 @@
 @{
     ViewData["Title"] = "Get All Anime";
 }
+<script src="~/js/anime.js"></script>
 
 <h1 class="text-center text-primary mt-4">Anime Collection</h1>
 
@@ -15,7 +16,7 @@
     <div class="row">
         @foreach (var item in Model)
         {
-            <div class="col-md-4 mb-4">
+            <div class="col-md-4 mb-4" data-model-id ="@item.MediaId" id="animo">
                 <div class="card shadow-lg">
                     <img src="~/imegas/Media/Anime/@item.Poster" class="card-img-top img-fluid" alt="Anime Poster">
 

@@ -26,6 +26,16 @@ namespace IMDB.Controllers
             var animes = animeservice.GetAll(); 
             return View(animes);
         }
+        // will catching id by default from url 
+        public IActionResult GetByid(int id)
+        {
+
+
+
+            return View();  
+        }
+
+
 
         // add a new anime 
         public IActionResult Add()
