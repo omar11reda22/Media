@@ -16,12 +16,14 @@ namespace IMDB.Services
         // will order by rating 
         public List<Media> GetBest()
         {
-             throw new NotImplementedException(); 
+             var best = context.medias.OrderByDescending(s => s.Rating).Take(5).ToList(); 
+            return best; 
         }
 
         public List<Media> GetNewArrival()
         {
-            throw new NotImplementedException();
+            var na = context.medias.OrderByDescending(s => s.ReleaseDate).Take(5).ToArray().ToList(); 
+            return na; 
         }
     }
 }

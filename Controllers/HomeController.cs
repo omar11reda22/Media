@@ -1,4 +1,5 @@
 using IMDB.Models;
+using IMDB.Services;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
 
@@ -7,10 +8,11 @@ namespace IMDB.Controllers
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
-
-        public HomeController(ILogger<HomeController> logger)
+        private readonly IFeatures features;
+        public HomeController(ILogger<HomeController> logger, IFeatures features)
         {
             _logger = logger;
+            this.features = features;
         }
 
         public IActionResult Index()
@@ -28,5 +30,10 @@ namespace IMDB.Controllers
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
+
+
+
+
+
     }
 }

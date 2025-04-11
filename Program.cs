@@ -34,7 +34,8 @@ namespace IMDB
             builder.Services.AddTransient<IActor<Media>, MovieDetailsRepo>();
             builder.Services.AddTransient<IActor<Media>, MovieDetailsRepo>();
             builder.Services.AddTransient<IActor<Director>, Directorrepo>();
-            builder.Services.AddTransient<IActor<Media>, AnimeRepo>(); 
+            builder.Services.AddTransient<IActor<Media>, AnimeRepo>();
+            builder.Services.AddTransient<IFeatures, FeatureService>(); 
 
             var app = builder.Build();
 
