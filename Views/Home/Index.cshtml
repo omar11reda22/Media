@@ -1,8 +1,47 @@
 ﻿@{
     ViewData["Title"] = "Home Page";
+    var newarrival = ViewBag.Newarrival as List<IMDB.Models.Media>;
+    var besto = ViewBag.Besto as List<IMDB.Models.Media>;
 }
+<link href="~/css/feature.css" rel="stylesheet" />
 
 <div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+    <h1 class="display-4">Welcome to IMDB</h1>
+    <p>Check out the top-rated and newest media additions.</p>
+</div>
+
+<hr />
+
+<h2>🔥 Top Rated</h2>
+<div class="media-scroll">
+    @foreach (var item in besto)
+    {
+        <div class="media-card">
+            <img src="@Url.Content($"~/imegas/Media/{item.MediaType?.Name}/{item.Poster}")"
+                 alt="@item.Title"
+                 class="media-img" />
+            <div class="media-body">
+                <h5>@item.Title</h5>
+                <p>⭐ Rating: @item.Rating</p>
+            </div>
+        </div>
+    }
+</div>
+
+<hr />
+
+<h2>🆕 New Arrivals</h2>
+<div class="media-scroll">
+    @foreach (var item in newarrival)
+    {
+        <div class="media-card">
+            <img src="@Url.Content($"~/imegas/Media/{item.MediaType?.Name}/{item.Poster}")"
+                 alt="@item.Title"
+                 class="media-img" />
+            <div class="media-body">
+                <h5>@item.Title</h5>
+                <p>⭐ Rating: @item.Rating</p>
+            </div>
+        </div>
+    }
 </div>

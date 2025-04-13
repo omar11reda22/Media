@@ -17,6 +17,15 @@ namespace IMDB.Controllers
 
         public IActionResult Index()
         {
+            // here wanna return a 2 both features 
+
+            var newarrival = features.GetNewArrival();
+            var besto = features.GetBest(); 
+
+            ViewBag.Newarrival = newarrival;
+            ViewBag.Besto = besto; 
+
+
             return View();
         }
 
