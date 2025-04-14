@@ -36,6 +36,10 @@ namespace IMDB.Controllers
         }
 
 
+        public IActionResult Getbyid(int id)
+        {
+            return View();
+        }
 
         // add a new anime 
         public IActionResult Add()

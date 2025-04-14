@@ -54,7 +54,28 @@ namespace IMDB.Services
 
         public AnimeViewModel getbyid(int id)
         {
-            throw new NotImplementedException();
+            var anime =  actorrepo.getbyid(id);
+            AnimeViewModel aa = new()
+            {
+                Title = anime.Title,
+                Description = anime.Description,
+                ReleaseDate = anime.ReleaseDate,
+                Episodes = anime.Episodes,
+                Poster = anime.Poster,
+                Studio = anime.Studio,
+                Year = anime.Year,
+                TrailerURL = anime.TrailerURL,
+                Rating = anime.Rating,
+                Seasons = anime.Seasons,
+                Name = anime.MediaType.Name,
+                genreViewModels = anime.MediaGenres.Select(s => new GenreViewModel
+                {
+                    Genre_ID = s.GenreId,
+                    Name = s.Genre.Name,
+                }).ToList()
+
+            };
+            return aa; 
         }
     }
 }

@@ -4,7 +4,7 @@
     var besto = ViewBag.Besto as List<IMDB.Models.Media>;
 }
 <link href="~/css/feature.css" rel="stylesheet" />
-
+<script src="~/js/home.js"></script>
 <div class="text-center">
     <h1 class="display-4">Welcome to IMDB</h1>
     <p>Check out the top-rated and newest media additions.</p>
@@ -16,7 +16,7 @@
 <div class="media-scroll">
     @foreach (var item in besto)
     {
-        <div class="media-card">
+        <div class="media-card"  id="media" data-model-id = "@item.MediaId">
             <img src="@Url.Content($"~/imegas/Media/{item.MediaType?.Name}/{item.Poster}")"
                  alt="@item.Title"
                  class="media-img" />
@@ -34,7 +34,7 @@
 <div class="media-scroll">
     @foreach (var item in newarrival)
     {
-        <div class="media-card">
+        <div class="media-card" id="media" data-model-id="@item.MediaId">
             <img src="@Url.Content($"~/imegas/Media/{item.MediaType?.Name}/{item.Poster}")"
                  alt="@item.Title"
                  class="media-img" />
