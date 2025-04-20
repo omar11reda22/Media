@@ -26,7 +26,12 @@ namespace IMDB.Controllers
             var animes = animeservice.GetAll(); 
             return View(animes);
         }
-        // will catching id by default from url 
+        // will catching id by default from url
+        // [
+        //
+        // ]
+
+        [HttpPost]
         public IActionResult GetByid(int id)
         {
 
@@ -35,7 +40,7 @@ namespace IMDB.Controllers
             return View(anime);  
         }
 
-
+        [HttpGet]
         public IActionResult Getbyid(int id)
         {
             return View();
