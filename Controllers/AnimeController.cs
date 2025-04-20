@@ -30,9 +30,9 @@ namespace IMDB.Controllers
         public IActionResult GetByid(int id)
         {
 
+            var anime = animeservice.getbyid(id); 
 
-
-            return View();  
+            return View(anime);  
         }
 
 
